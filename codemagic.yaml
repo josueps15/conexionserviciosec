@@ -25,7 +25,9 @@ workflows:
 
       - name: Set up Code Signing
         script: |
+          keychain initialize
           app-store-connect fetch-signing-files "com.services.ecuador" --type IOS_APP_STORE --create
+          keychain add-certificates
           xcode-project use-profiles
 
       - name: Build iOS App (.ipa)
