@@ -13,7 +13,8 @@
     "FirebaseAuthentication": {
       "skipNativeAuth": false,
       "providers": [
-        "google.com"
+        "google.com",
+        "apple.com"
       ],
       "webClientId": "231490961430-hijc895a5m1g40j1mau5kvuluk5ieffq.apps.googleusercontent.com"
     },
