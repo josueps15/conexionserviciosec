@@ -3,44 +3,41 @@ workflows:
     name: "iOS Build (Capacitor)"
     instance_type: mac_mini_m1
     max_build_duration: 120
+    integrations:
+      app_store_connect: codemagic_api_key  # Nombre de tu API Key en Codemagic UI
     environment:
-      node: 20
+      node: "20"
       xcode: latest
       cocoapods: default
-      # groups:
-      #   - ios_credentials # Descomenta y usa este grupo cuando configures los certificados en Codemagic UI 
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.services.ecuador
     scripts:
       - name: Install npm dependencies
         script: |
-          # Eliminar el package-lock para evitar errores de bindings (como rollup-darwin-arm64) en la Mac M1
           rm -f package-lock.json
           npm install --legacy-peer-deps
-      - name: Generate .env file
-        script: |
-          # Si usas variables de entorno, puedes crearlas combinando las configuradas en la UI de Codemagic
-          # Ejemplo: echo "VITE_API_URL=$VITE_API_URL" >> .env
-          echo 'Building web assets...'
+
       - name: Build Web App
         script: |
           npm run build
+
       - name: Sync iOS platform
         script: |
           npx cap sync ios
-      - name: Set up Code Signing
-        script: |
-          # Extrae las configuraciones de firmas automáticas seteadas en la UI de Codemagic
-          xcode-project use-profiles || true
+
       - name: Build iOS App (.ipa)
         script: |
-          # Construye la aplicación compendiada lista para App Store o TestFlight
           xcode-project build-ipa \
             --workspace "ios/App/App.xcworkspace" \
-            --scheme "App"
+            --scheme "App" \
+            --archive-xcargs "CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM=2B9K7JUTF5"
+
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
+
     publishing:
       app_store_connect:
-        # Utiliza la App Store Connect API keys en Codemagic UI para publicar automáticamente a TestFlight
-        # auth: integration
-        # submit_to_testflight: true
+        auth: integration
+        submit_to_testflight: true
