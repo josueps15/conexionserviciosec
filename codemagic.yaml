@@ -25,7 +25,8 @@ workflows:
 
       - name: Set up Code Signing
         script: |
-          xcode-project manage-certificates --bundle-id "com.services.ecuador" --type "app_store" --create
+          app-store-connect fetch-signing-files "com.services.ecuador" --type IOS_APP_STORE --create
+          xcode-project use-profiles
 
       - name: Build iOS App (.ipa)
         script: |
