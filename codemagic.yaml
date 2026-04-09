@@ -26,12 +26,16 @@ workflows:
         script: |
           npx cap sync ios
 
+      - name: Set up Code Signing
+        script: |
+          xcode-project manage-certificates --bundle-id "com.services.ecuador" --type "app_store" --create
+
       - name: Build iOS App (.ipa)
         script: |
           xcode-project build-ipa \
             --workspace "ios/App/App.xcworkspace" \
             --scheme "App" \
-            --archive-xcargs "CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM=2B9K7JUTF5"
+            --archive-xcargs "CODE_SIGN_STYLE=Manual"
 
     artifacts:
       - build/ios/ipa/*.ipa
