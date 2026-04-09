@@ -1,0 +1,13 @@
+{
+  "name": "Conexión Servicios",
+  "description": "Aplicación oficial de Conexión Servicios. Conexión directa entre clientes y profesionales certificados.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "android": {
+    "package": "com.services.ecuador",
+    "versionCode": 1,
+    "versionName": "1.0.0"
+  }
+}

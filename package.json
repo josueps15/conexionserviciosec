@@ -1,0 +1,44 @@
+{
+  "name": "conexion-servicios",
+  "private": true,
+  "version": "1.0.0",
+  "description": "App de Servicios Ecuador Profesional",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "postinstall": "node scripts/fix-push-notifications.js"
+  },
+  "dependencies": {
+    "@capacitor-firebase/authentication": "^6.3.1",
+    "@capacitor/action-sheet": "^6.0.4",
+    "@capacitor/android": "^6.1.3",
+    "@capacitor/app": "^6.0.3",
+    "@capacitor/camera": "^6.1.3",
+    "@capacitor/core": "^6.2.1",
+    "@capacitor/geolocation": "^6.1.1",
+    "@capacitor/ios": "^6.2.0",
+    "@capacitor/network": "^6.0.4",
+    "@capacitor/push-notifications": "^6.0.5",
+    "@google/genai": "^1.35.0",
+    "@hello-pangea/color-picker": "^3.2.2",
+    "browser-image-compression": "^2.0.2",
+    "firebase": "^10.7.1",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-easy-crop": "^5.5.6"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  }
+}

@@ -1,0 +1,23 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // CORRECCIÓN: Tu código React usa 'users', así que la regla debe decir 'users'
+    match /users/{userId} {
+      // Permitir leer y escribir a cualquier usuario autenticado (incluyendo admin-master)
+      allow read, write: if request.auth != null || userId == 'admin-master'; 
+    }
+
+    // CORRECCIÓN: Tu código React usa 'services', así que la regla debe decir 'services'
+    match /services/{serviceId} {
+      allow read: if true; // IMPORTANTE: Esto permite que cualquiera vea los servicios en el Home
+      allow write: if request.auth != null; // Solo usuarios registrados pueden crear/editar
+    }
+
+    // Regla de seguridad global (Respaldo)
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

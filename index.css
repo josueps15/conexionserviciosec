@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-[#020617] text-white overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    transition: background-color 0.4s ease;
+    width: 100%;
+    position: relative;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Prevent auto-zoom on inputs */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+
+  ::selection {
+    background: rgba(89, 203, 200, 0.3);
+    color: inherit;
+  }
+}
+
+/* Custom Utilities */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+/* Animations */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-in {
+  animation: page-in 0.6s ease-out forwards;
+}
+
+@keyframes page-back {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-back {
+  animation: page-back 0.6s ease-out forwards;
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+@keyframes enter-forward {
+  from {
+    transform: translateX(30px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-enter-forward {
+  animation: enter-forward 0.35s ease-out forwards;
+  will-change: transform;
+}
+
+@keyframes enter-backward {
+  from {
+    transform: translateX(-30px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-enter-backward {
+  animation: enter-backward 0.35s ease-out forwards;
+  will-change: transform;
+}
+
+/* Stagger delays */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bounce-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Stable selection for mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Fix for Android selection magnifier breaking transforms */
+.animate-slide-up, .animate-page-in, .animate-page-back {
+  will-change: transform, opacity;
+}
+
+[data-animation-finished="true"],
+[data-animation-finished="true"] * {
+  animation: none !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  will-change: auto !important;
+  transition: transform 0s, opacity 0s !important;
+}
+
+/* iOS Safe Area Hacks */
+/* This ensures Android NEVER processes these env variables incorrectly */
+@supports (-webkit-touch-callout: none) {
+  .ios-safe-pt {
+    padding-top: max(env(safe-area-inset-top), 24px) !important;
+  }
+  .ios-safe-pb {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+  }
+  .ios-floating-footer {
+    bottom: env(safe-area-inset-bottom) !important;
+  }
+}

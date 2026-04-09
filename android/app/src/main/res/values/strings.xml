@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Conexión Servicios</string>
+    <string name="title_activity_main">Conexión Servicios</string>
+    <string name="package_name">com.services.ecuador</string>
+    <string name="custom_url_scheme">com.services.ecuador</string>
+</resources>

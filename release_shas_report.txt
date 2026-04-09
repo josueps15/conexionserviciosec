@@ -1,0 +1,47 @@
+
+> Configure project :app
+WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+
+> Configure project :capacitor-cordova-android-plugins
+WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+
+> Task :app:printReleaseSHA FAILED
+EXTRACTING_SHA_START
+keytool error: java.io.IOException: keystore password was incorrect
+java.io.IOException: keystore password was incorrect
+	at java.base/sun.security.pkcs12.PKCS12KeyStore.engineLoad(PKCS12KeyStore.java:2098)
+	at java.base/sun.security.util.KeyStoreDelegator.engineLoad(KeyStoreDelegator.java:228)
+	at java.base/java.security.KeyStore.load(KeyStore.java:1499)
+	at java.base/java.security.KeyStore.getInstance(KeyStore.java:1827)
+	at java.base/java.security.KeyStore.getInstance(KeyStore.java:1708)
+	at java.base/sun.security.tools.keytool.Main.doCommands(Main.java:956)
+	at java.base/sun.security.tools.keytool.Main.run(Main.java:429)
+	at java.base/sun.security.tools.keytool.Main.main(Main.java:410)
+Caused by: java.security.UnrecoverableKeyException: failed to decrypt safe contents entry: javax.crypto.BadPaddingException: Given final block not properly padded. Such issues can arise if a bad key is used during decryption.
+	... 8 more
+
+[Incubating] Problems report is available at: file:///C:/Users/josue/Downloads/services-ecuador---red-profesional/android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'C:\Users\josue\Downloads\services-ecuador---red-profesional\android\app\build.gradle' line: 73
+
+* What went wrong:
+Execution failed for task ':app:printReleaseSHA'.
+> Process 'command 'keytool'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 3s
+1 actionable task: 1 executed

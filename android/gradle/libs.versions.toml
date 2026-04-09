@@ -1,0 +1,38 @@
+[versions]
+# SDK Versions
+compileSdk = "34"
+minSdkVersion = "23"
+targetSdkVersion = "34"
+
+# Dependencies
+appcompat = "1.6.1"
+coordinatorlayout = "1.2.0"
+coreSplashscreen = "1.0.1"
+espressoCore = "3.5.1"
+firebaseBom = "32.7.0"
+googleServices = "4.4.0"
+gradle = "8.13.2"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+playServicesAuth = "20.7.0"
+foojayResolver = "0.8.0"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-coordinatorlayout = { group = "androidx.coordinatorlayout", name = "coordinatorlayout", version.ref = "coordinatorlayout" }
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+
+# Add actual firebase libraries so they can be used in implementation
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+
+[plugins]
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+foojay-resolver = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojayResolver" }

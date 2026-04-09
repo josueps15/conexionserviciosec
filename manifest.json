@@ -1,0 +1,10 @@
+{
+  "short_name": "Conexión Servicios",
+  "name": "Conexión Servicios",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "orientation": "portrait"
+}

@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "231490961430",
+    "project_id": "services-17abe",
+    "storage_bucket": "services-17abe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231490961430:android:d35fa46ce3e9a317a2f537",
+        "android_client_info": {
+          "package_name": "com.conexionservicios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231490961430-1op9hnavitp0cm71b001u6fegfalg80l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.conexionservicios",
+            "certificate_hash": "679c386794383f02511a5a819cf6e8a4bdfc216b"
+          }
+        },
+        {
+          "client_id": "231490961430-l9m71k7n5jkcqsgumfspv8qptv51oksn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.conexionservicios",
+            "certificate_hash": "c25a721c222e1a0f2137e37d2181491d206bb071"
+          }
+        },
+        {
+          "client_id": "231490961430-hijc895a5m1g40j1mau5kvuluk5ieffq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX7a2CMvkTAFQorgLFJxNYsCd3mBIvHFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231490961430-hijc895a5m1g40j1mau5kvuluk5ieffq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231490961430:android:75969e98902309cea2f537",
+        "android_client_info": {
+          "package_name": "com.services.ecuador"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231490961430-t78li5r9oim63totibb701gallkv5elm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.services.ecuador",
+            "certificate_hash": "c25a721c222e1a0f2137e37d2181491d206bb071"
+          }
+        },
+        {
+          "client_id": "231490961430-hijc895a5m1g40j1mau5kvuluk5ieffq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX7a2CMvkTAFQorgLFJxNYsCd3mBIvHFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231490961430-hijc895a5m1g40j1mau5kvuluk5ieffq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

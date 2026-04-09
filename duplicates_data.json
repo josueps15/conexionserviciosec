@@ -1,0 +1,82 @@
+{
+  "Centro Naturista": [
+    {
+      "id": "centro-naturista",
+      "translationKey": "cat_centro-naturista",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/services-17abe.firebasestorage.app/o/categories%2Fcentro-naturista%2Fcover?alt=media&token=427e7aaa-beb5-4194-8da8-fc98139a97a1",
+      "icon": "Leaf",
+      "name": "Centro Naturista",
+      "order": 32
+    },
+    {
+      "id": "naturista",
+      "order": 32,
+      "subcategoryConfig": {},
+      "name": "Centro Naturista",
+      "icon": "Leaf",
+      "bgColor": "",
+      "translationKey": "cat_naturista",
+      "imageUrl": "",
+      "subcategories": [
+        "Productos naturales",
+        "Especialidades naturistas"
+      ],
+      "imagePosition": "center"
+    }
+  ],
+  "Centros Educativos": [
+    {
+      "id": "educacion",
+      "name": "Centros Educativos",
+      "icon": "GraduationCap",
+      "order": 11,
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/services-17abe.firebasestorage.app/o/categories%2Feducacion%2Fcover?alt=media&token=2edc7350-c376-476b-8a47-f21d6ec4c25a",
+      "translationKey": "cat_educacion"
+    },
+    {
+      "id": "educativos",
+      "imageCover": "https://firebasestorage.googleapis.com/v0/b/services-17abe.firebasestorage.app/o/categories%2Feducativos%2Fcover_1775331309804?alt=media&token=c170f9f7-88f6-479b-8f24-8588063486f7",
+      "subcategories": [
+        "Escuela de idiomas",
+        "Escuela de música",
+        "Guardería",
+        "Escuela y colegio",
+        "Escuela de conducir",
+        "Guardería infantil"
+      ],
+      "imagePosition": "center",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/services-17abe.firebasestorage.app/o/categories%2Feducativos%2Fcover_1775331309804?alt=media&token=c170f9f7-88f6-479b-8f24-8588063486f7",
+      "translationKey": "cat_educativos",
+      "icon": "GraduationCap",
+      "name": "Centros Educativos",
+      "order": 13,
+      "subcategoryConfig": {},
+      "bgColor": ""
+    }
+  ],
+  "Aire Acondicionado": [
+    {
+      "id": "aire-acondicionado",
+      "translationKey": "cat_aire-acondicionado",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/services-17abe.firebasestorage.app/o/categories%2Faire-acondicionado%2Fcover?alt=media&token=6d939c06-e702-46b0-ad6b-bcfc21fa82c8",
+      "order": 29,
+      "icon": "Wind",
+      "name": "Aire Acondicionado"
+    },
+    {
+      "id": "aire_acondicionado",
+      "translationKey": "cat_aire_acondicionado",
+      "imagePosition": "center",
+      "subcategories": [
+        "Venta",
+        "Mantenimiento"
+      ],
+      "imageUrl": "",
+      "bgColor": "",
+      "name": "Aire Acondicionado",
+      "icon": "Wind",
+      "order": 29,
+      "subcategoryConfig": {}
+    }
+  ]
+}
