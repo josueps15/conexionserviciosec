@@ -8,18 +8,23 @@ import { Capacitor } from "@capacitor/core";
 // Configuración Oficial - Conexión Servicios
 // NOTA: Usamos una lógica de selección de API Key para asegurar compatibilidad total con Android Nativo
 const IS_ANDROID = Capacitor.getPlatform() === 'android';
+const IS_IOS = Capacitor.getPlatform() === 'ios';
 
 const firebaseConfig = {
   apiKey: IS_ANDROID 
     ? "AIzaSyAX7a2CMvkTAFQorgLFJxNYsCd3mBIvHFI" // Android API Key (from google-services.json)
-    : "AIzaSyBAAnI0HUJyW57SOu9JCO1n6AyaYT8HmSU", // Web API Key
+    : IS_IOS
+      ? "AIzaSyCrPrUD2Kq8s60B0v0ugTLUsPdajYNU_3Y" // iOS API Key (from GoogleService-Info.plist)
+      : "AIzaSyBAAnI0HUJyW57SOu9JCO1n6AyaYT8HmSU", // Web API Key
   authDomain: "services-17abe.firebaseapp.com",
   projectId: "services-17abe",
   storageBucket: "services-17abe.firebasestorage.app",
   messagingSenderId: "231490961430",
   appId: IS_ANDROID
     ? "1:231490961430:android:d35fa46ce3e9a317a2f537" // Android App ID
-    : "1:231490961430:web:b1a9a92cd3416a51a2f537",   // Web App ID
+    : IS_IOS
+      ? "1:231490961430:ios:d27329182b7af717a2f537"    // iOS App ID (from GoogleService-Info.plist)
+      : "1:231490961430:web:b1a9a92cd3416a51a2f537",   // Web App ID
   measurementId: "G-Y9W5TWE9ZH"
 };
 
