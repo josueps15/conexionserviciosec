@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { initializeAuth, indexedDBLocalPersistence, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
@@ -34,8 +34,10 @@ const app = initializeApp(firebaseConfig);
 // Inicializamos Analytics
 const analytics = getAnalytics(app);
 
-// Servicios exportados
-export const auth = getAuth(app);
+// Servicios exportados: Fix for iOS Auth hanging using IndexedDB persistence
+export const auth = initializeAuth(app, {
+  persistence: indexedDBLocalPersistence
+});
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
