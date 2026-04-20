@@ -57,7 +57,7 @@ export const translations = {
         auth_title_login: "ENTRAR\nAHORA",
         auth_title_register: "CREAR\nCUENTA",
         auth_name: "NOMBRE",
-        auth_email: "CORREO ELECTRÓNICO COMPLETO",
+        auth_email: "CORREO ELECTRÓNICO",
         auth_pass: "CONTRASEÑA",
         auth_confirm_pass: "CONFIRMAR CONTRASEÑA",
         auth_forgot: "¿Olvidaste tu contraseña?",

@@ -240,7 +240,7 @@ const App: React.FC = () => {
               const userRef = doc(db, 'users', firebaseUser.uid);
               await setDoc(userRef, { fcmToken: pendingToken }, { merge: true });
               localStorage.removeItem('pending_fcm_token');
-              console.log('Pending fcmToken saved successfully');
+              // Pending fcmToken saved successfully
             } catch (e) {
               console.warn("Failed to save pending fcmToken", e);
             }
@@ -315,13 +315,13 @@ const App: React.FC = () => {
 
         // Add listeners BEFORE register
         PushNotifications.addListener('registration', async (token) => {
-          console.log('Registration success, token:', token.value);
+          // Registration success
           const currentUserId = user?.id || localStorage.getItem('user_id');
           if (currentUserId) {
             try {
               const userRef = doc(db, 'users', currentUserId);
               await setDoc(userRef, { fcmToken: token.value }, { merge: true });
-              console.log('fcmToken saved successfully for user:', currentUserId);
+              // fcmToken saved successfully
             } catch (e) {
               console.warn("Failed to save fcmToken", e);
             }
@@ -339,12 +339,12 @@ const App: React.FC = () => {
 
 
         PushNotifications.addListener('pushNotificationReceived', (notification) => {
-          console.log('Push received: ' + JSON.stringify(notification));
+          // Push received
         });
 
 
         PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-          console.log('Push action performed: ' + JSON.stringify(notification));
+          // Push action performed
           const data = notification.notification.data;
 
           if (data && data.type === 'notifications') {
@@ -375,6 +375,31 @@ const App: React.FC = () => {
     if (!window.location.hash) {
       window.history.replaceState({ view: 'splash' }, '', '#splash');
     }
+
+    // Helper: navigate back using internal history with fallback
+    // (inlined here to avoid TDZ issues with handleBack ref)
+    const doInternalBack = () => {
+      const startView = viewRef.current;
+      const startHistory = historyRef.current;
+
+      // Try browser history first
+      window.history.back();
+
+      // Fallback: if popstate doesn't fire (cold start / restored session),
+      // manually pop our internal stack after a short delay
+      setTimeout(() => {
+        if (viewRef.current === startView && startHistory.length > 1) {
+          const newHistory = [...startHistory];
+          newHistory.pop();
+          const prevView = newHistory[newHistory.length - 1];
+
+          setHistory(newHistory);
+          setDir('backward');
+          setView(prevView);
+          window.history.replaceState({ view: prevView }, '', `#${prevView}`);
+        }
+      }, 150);
+    };
 
     // 2. Centralized Back Handler (popstate)
     const handlePopState = (e: PopStateEvent) => {
@@ -436,8 +461,8 @@ const App: React.FC = () => {
           CapacitorApp.exitApp();
         }
       } else {
-        // This is where we bridge to the unified history logic
-        window.history.back();
+        // Navigate back with fallback for empty browser history
+        doInternalBack();
       }
     };
 
@@ -525,6 +550,17 @@ const App: React.FC = () => {
     setView(newView);
   };
 
+  const navigateTab = (newView: string) => {
+    if (newView === 'home') {
+      navigateTo('home', true);
+    } else {
+      setDir('forward');
+      setHistory(['home', newView]);
+      window.history.replaceState({ view: newView }, '', `#${newView}`);
+      setView(newView);
+    }
+  };
+
   const handleBack = () => {
     // 1. Capture state before attempting back
     const startView = viewRef.current;
@@ -538,7 +574,7 @@ const App: React.FC = () => {
     // (length 1), popstate won't fire. We wait a bit and check if view changed.
     setTimeout(() => {
       if (viewRef.current === startView && startHistory.length > 1) {
-        console.log("Fallback manual back triggered");
+        // Fallback manual back triggered
         const newHistory = [...startHistory];
         newHistory.pop();
         const prevView = newHistory[newHistory.length - 1];
@@ -1052,7 +1088,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`w-full h-[100dvh] relative flex flex-col transition-colors duration-500 ${isDarkMode ? 'bg-[#020617]' : 'bg-slate-50'} ${view === 'admin' ? 'w-screen' : 'mx-auto max-w-md md:max-w-3xl lg:max-w-[1600px] shadow-2xl'} overflow-x-hidden`} style={{ overscrollBehavior: 'none', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
+    <div className={`w-full h-[100dvh] relative flex flex-col transition-colors duration-500 ${isDarkMode ? 'bg-[#020617]' : 'bg-slate-50'} ${view === 'admin' ? 'w-screen' : 'mx-auto max-w-md md:max-w-3xl lg:max-w-[1600px] shadow-2xl'} overflow-x-hidden`} style={{ overscrollBehavior: 'none', paddingTop: 'env(safe-area-inset-top)', paddingBottom: view === 'ai-chat' ? '0px' : 'env(safe-area-inset-bottom)' }}>
       {/* Offline Notification Banner */}
       <div
         className={`
@@ -1095,16 +1131,16 @@ const App: React.FC = () => {
       )}
 
       {/* Persistent Footer - Only on main top-level views and if not explicitly hidden */}
-      {!isFooterHidden && ['home', 'profile', 'favorites', 'ai-chat'].includes(view) && (
+      {!isFooterHidden && ['home', 'profile', 'favorites'].includes(view) && (
         <Footer
           isDarkMode={isDarkMode}
           user={user}
-          onOpenSearch={() => navigateTo('search')}
-          onChangeLocation={() => handleBack()}
-          onOpenAI={() => navigateTo('ai-chat')}
-          onGoToFavorites={() => navigateTo('favorites')}
-          onOpenProfile={() => navigateTo('profile')}
-          onGoToHome={() => handleBack()}
+          onOpenSearch={() => navigateTab('search')}
+          onChangeLocation={() => navigateTab('geo-select')}
+          onOpenAI={() => navigateTab('ai-chat')}
+          onGoToFavorites={() => navigateTab('favorites')}
+          onOpenProfile={() => navigateTab('profile')}
+          onGoToHome={() => navigateTab('home')}
           t={translations[language]}
           theme={{
             accentBg: isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]',

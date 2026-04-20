@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { User } from '../types';
-import { ArrowLeft, Camera as LucideCamera, LogOut, Trash2, Save, User as UserIcon, Calendar, Mail, AlertTriangle, Shield, Settings, Palette, Globe, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Camera as LucideCamera, LogOut, Trash2, Save, User as UserIcon, Calendar, Mail, AlertTriangle, Shield, Settings, Palette, Globe, ChevronRight, Moon, Sun, Monitor } from 'lucide-react';
 import { auth, storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
@@ -571,7 +571,7 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
         switch (currentView) {
             case 'edit':
                 return (
-                    <div className="px-6 pb-32 max-w-lg mx-auto w-full space-y-8 animate-page-in">
+                    <div className="px-6 pb-6 max-w-lg mx-auto w-full space-y-5 animate-page-in">
                         {/* AVATAR UPLOAD */}
                         <div className="flex flex-col items-center gap-4">
                             <div className="relative group cursor-pointer" onClick={handlePhotoSelection}>
@@ -615,39 +615,39 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
 
             case 'security':
                 return (
-                    <div className="px-6 space-y-4 animate-page-in">
-                        <div className={`p-8 rounded-[35px] ${themeStyles.card} flex items-center gap-6 border-b-4 border-b-[#59CBC8]/20`}>
-                            <div className="w-16 h-16 rounded-3xl bg-[#59CBC8]/10 flex items-center justify-center text-[#59CBC8] shadow-inner">
-                                <Shield size={32} />
+                    <div className="px-5 pb-4 space-y-4 animate-page-in">
+                        <div className={`p-4 rounded-[25px] ${themeStyles.card} flex items-center gap-4 border-b-4 border-b-[#59CBC8]/20`}>
+                            <div className="w-12 h-12 rounded-2xl bg-[#59CBC8]/10 flex items-center justify-center text-[#59CBC8] shadow-inner flex-shrink-0">
+                                <Shield size={26} />
                             </div>
                             <div>
-                                <h3 className={`font-black uppercase tracking-tight ${themeStyles.text}`}>{t.profile_security_center}</h3>
-                                <p className={`text-[10px] font-bold uppercase tracking-widest opacity-60 ${themeStyles.subtext}`}>{t.profile_protect_access}</p>
+                                <h3 className={`font-black uppercase tracking-tight text-sm ${themeStyles.text}`}>{t.profile_security_center}</h3>
+                                <p className={`text-[9px] font-bold uppercase tracking-widest opacity-60 ${themeStyles.subtext}`}>{t.profile_protect_access}</p>
                             </div>
                         </div>
 
-                        <div className="pt-8">
-                            <h4 className={`text-[11px] font-black uppercase tracking-[4px] mb-4 ${themeStyles.subtext} ml-4`}>AUTENTICACIÓN</h4>
-                            <div className={`rounded-[30px] ${themeStyles.card} overflow-hidden divide-y divide-white/5`}>
+                        <div>
+                            <h4 className={`text-[10px] font-black uppercase tracking-[4px] mb-3 ${themeStyles.subtext} ml-2`}>AUTENTICACIÓN</h4>
+                            <div className={`rounded-[25px] ${themeStyles.card} overflow-hidden divide-y divide-white/5`}>
                                 <button
                                     onClick={() => setCurrentView('password')}
-                                    className={`w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors active:bg-white/5`}
+                                    className={`w-full p-4 flex items-center justify-between hover:bg-white/5 transition-colors active:bg-white/5`}
                                 >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-[#59CBC8] shadow-lg`}>
-                                            <div className="scale-110"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></div>
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-[#59CBC8] shadow-lg`}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
                                         </div>
                                         <div className="text-left">
                                             <h4 className={`font-bold text-sm ${themeStyles.text}`}>{t.profile_update_pass}</h4>
-                                            <p className={`text-[10px] font-bold uppercase opacity-50 ${themeStyles.subtext}`}>{t.profile_update_access_key}</p>
+                                            <p className={`text-[9px] font-bold uppercase opacity-50 ${themeStyles.subtext}`}>{t.profile_update_access_key}</p>
                                         </div>
                                     </div>
-                                    <div className="opacity-30"><ArrowLeft size={20} className="rotate-180" /></div>
+                                    <div className="opacity-30"><ArrowLeft size={18} className="rotate-180" /></div>
                                 </button>
                             </div>
                         </div>
 
-                        <p className={`text-center text-[10px] font-bold uppercase tracking-[2px] ${themeStyles.subtext} pt-12 px-12 leading-relaxed opacity-40`}>
+                        <p className={`text-center text-[10px] font-bold uppercase tracking-[2px] ${themeStyles.subtext} pt-2 px-8 leading-relaxed opacity-40`}>
                             Tus datos están protegidos bajo estándares internacionales de seguridad.
                         </p>
                     </div>
@@ -655,7 +655,7 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
 
             case 'password':
                 return (
-                    <div className="px-6 space-y-8 animate-page-in max-w-lg mx-auto w-full">
+                    <div className="px-6 space-y-5 animate-page-in max-w-lg mx-auto w-full">
                         <div className="text-center space-y-2">
                             <h3 className={`text-2xl font-[1000] uppercase tracking-tighter ${themeStyles.text}`}>Actualizar Contraseña</h3>
                             <p className={`text-[10px] font-black uppercase tracking-[3px] opacity-60 ${themeStyles.subtext}`}>Introduce tus nuevas credenciales</p>
@@ -709,7 +709,7 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
                             <button
                                 onClick={handleUpdatePassword}
                                 disabled={passwordLoading}
-                                className="w-full h-20 bg-[#59CBC8] rounded-[30px] flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_15px_40px_rgba(89,203,200,0.3)] mt-8 group"
+                                className="w-full h-20 bg-[#59CBC8] rounded-[30px] flex flex-col items-center justify-center active:scale-95 transition-all shadow-[0_15px_40px_rgba(89,203,200,0.3)] mt-4 group"
                             >
                                 {passwordLoading ? (
                                     <span className="animate-spin w-6 h-6 border-3 border-slate-900 border-t-transparent rounded-full"></span>
@@ -730,20 +730,20 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
 
             case 'settings':
                 return (
-                    <div className="px-6 space-y-8 animate-page-in pt-4">
+                    <div className="px-5 pb-4 space-y-4 animate-page-in pt-2">
                         {/* Idioma Section */}
-                        <div className="space-y-4">
-                            <h4 className={`text-[10px] font-black uppercase tracking-[2px] mb-2 ${themeStyles.subtext} ml-2`}>
+                        <div className="space-y-2">
+                            <h4 className={`text-[10px] font-black uppercase tracking-[2px] mb-1 ${themeStyles.subtext} ml-2`}>
                                 {t.settings_lang}
                             </h4>
-                            <div className={`rounded-[30px] ${themeStyles.card} overflow-hidden divide-y divide-white/5 shadow-xl`}>
+                            <div className={`rounded-[25px] ${themeStyles.card} overflow-hidden divide-y divide-white/5 shadow-xl`}>
                                 <button
                                     onClick={() => onChangeLanguage('es')}
-                                    className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-all group"
+                                    className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-all group"
                                 >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`w-11 h-11 rounded-2xl bg-slate-800 flex items-center justify-center ${language === 'es' ? 'text-[#59CBC8]' : 'text-slate-500'} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
-                                            <Globe size={22} />
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center ${language === 'es' ? 'text-[#59CBC8]' : 'text-slate-500'} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
+                                            <Globe size={20} />
                                         </div>
                                         <div className="text-left">
                                             <p className={`font-black text-sm uppercase tracking-tight ${themeStyles.text}`}>Español</p>
@@ -753,18 +753,18 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
                                         </div>
                                     </div>
                                     {language === 'es' && (
-                                        <div className="w-6 h-6 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
-                                            <div className="w-full h-full rounded-full bg-[#59CBC8] shadow-[0_0_10px_rgba(89,203,200,0.5)]"></div>
+                                        <div className="w-5 h-5 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
+                                            <div className="w-full h-full rounded-full bg-[#59CBC8]"></div>
                                         </div>
                                     )}
                                 </button>
                                 <button
                                     onClick={() => onChangeLanguage('en')}
-                                    className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-all group"
+                                    className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-all group"
                                 >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`w-11 h-11 rounded-2xl bg-slate-800 flex items-center justify-center ${language === 'en' ? 'text-[#59CBC8]' : 'text-slate-500'} group-hover:scale-110 transition-transform flex-shrink-0`}>
-                                            <Globe size={22} />
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center ${language === 'en' ? 'text-[#59CBC8]' : 'text-slate-500'} group-hover:scale-110 transition-transform flex-shrink-0`}>
+                                            <Globe size={20} />
                                         </div>
                                         <div className="text-left">
                                             <p className={`font-black text-sm uppercase tracking-tight ${themeStyles.text}`}>English</p>
@@ -774,8 +774,8 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
                                         </div>
                                     </div>
                                     {language === 'en' && (
-                                        <div className="w-6 h-6 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
-                                            <div className="w-full h-full rounded-full bg-[#59CBC8] shadow-[0_0_10px_rgba(89,203,200,0.5)]"></div>
+                                        <div className="w-5 h-5 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
+                                            <div className="w-full h-full rounded-full bg-[#59CBC8]"></div>
                                         </div>
                                     )}
                                 </button>
@@ -783,34 +783,34 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
                         </div>
 
                         {/* Gestión de Cuenta Section */}
-                        <div className="space-y-4">
-                            <h4 className={`text-[10px] font-black uppercase tracking-[2px] mb-2 ${themeStyles.subtext} ml-2`}>
+                        <div className="space-y-2">
+                            <h4 className={`text-[10px] font-black uppercase tracking-[2px] mb-1 ${themeStyles.subtext} ml-2`}>
                                 {t.settings_security}
                             </h4>
-                            <div className={`rounded-[30px] ${themeStyles.card} overflow-hidden divide-y divide-white/5 shadow-xl`}>
-                                <button onClick={onLogout} className={`w-full p-6 flex items-center justify-between hover:bg-red-500/5 transition-all group`}>
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-11 h-11 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform shadow-lg border border-red-500/10">
-                                            <LogOut size={22} />
+                            <div className={`rounded-[25px] ${themeStyles.card} overflow-hidden divide-y divide-white/5 shadow-xl`}>
+                                <button onClick={onLogout} className={`w-full p-4 flex items-center justify-between hover:bg-red-500/5 transition-all group`}>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform shadow-lg border border-red-500/10">
+                                            <LogOut size={20} />
                                         </div>
                                         <div className="text-left">
                                             <p className="font-black text-sm uppercase tracking-tight text-red-500">{t.profile_logout}</p>
                                             <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[2px] mt-0.5">{t.profile_logout_note}</p>
                                         </div>
                                     </div>
-                                    <ChevronRight size={18} className="text-red-500/30" />
+                                    <ChevronRight size={16} className="text-red-500/30" />
                                 </button>
-                                <button onClick={confirmDelete} className={`w-full p-6 flex items-center justify-between hover:bg-red-500/5 transition-all group`}>
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-11 h-11 rounded-2xl bg-red-500/5 flex items-center justify-center text-red-500/60 group-hover:scale-110 transition-transform">
-                                            <Trash2 size={22} />
+                                <button onClick={confirmDelete} className={`w-full p-4 flex items-center justify-between hover:bg-red-500/5 transition-all group`}>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-xl bg-red-500/5 flex items-center justify-center text-red-500/60 group-hover:scale-110 transition-transform">
+                                            <Trash2 size={20} />
                                         </div>
                                         <div className="text-left">
                                             <p className="font-black text-sm uppercase tracking-tight text-red-500/60">{t.profile_delete}</p>
                                             <p className="text-[9px] font-black text-red-500/30 uppercase tracking-[2px] mt-0.5">{t.profile_delete_note}</p>
                                         </div>
                                     </div>
-                                    <ChevronRight size={18} className="text-red-500/20" />
+                                    <ChevronRight size={16} className="text-red-500/20" />
                                 </button>
                             </div>
                         </div>
@@ -819,100 +819,103 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
 
             case 'theme':
                 return (
-                    <div className="px-6 space-y-8 animate-page-in">
-                        {/* Preview */}
-                        <div className="flex justify-center py-4">
-                            <div className={`w-44 h-[320px] rounded-[38px] border-[7px] ${isDarkMode ? 'border-[#1e293b]' : 'border-slate-800'} relative overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-500`}>
-                                {/* Background Gradient */}
+                    <div className="px-5 pb-4 space-y-4 animate-page-in pt-2">
+                        {/* Phone Preview */}
+                        <div className="flex justify-center py-2">
+                            <div className={`w-36 h-[240px] rounded-[30px] border-[6px] ${isDarkMode ? 'border-[#1e293b]' : 'border-slate-800'} relative overflow-hidden shadow-[0_20px_40px_-12px_rgba(0,0,0,0.5)] transition-all duration-500`}>
                                 <div className={`absolute inset-0 transition-colors duration-700 ${isDarkMode ? 'bg-[#020617]' : 'bg-slate-50'}`}></div>
-
-                                {/* Status Bar */}
-                                <div className="absolute top-0 left-0 right-0 h-6 px-4 flex items-center justify-between z-20">
-                                    <span className={`text-[8px] font-black ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>12:45</span>
-                                    <div className="flex items-center gap-1 opacity-40">
-                                        <div className={`w-2 h-2 rounded-full ${isDarkMode ? 'bg-white' : 'bg-slate-900'}`}></div>
-                                        <div className={`w-3 h-2 rounded-[2px] border ${isDarkMode ? 'border-white' : 'border-slate-900'}`}></div>
+                                <div className="absolute top-0 left-0 right-0 h-5 px-3 flex items-center justify-between z-20">
+                                    <span className={`text-[7px] font-black ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>12:45</span>
+                                    <div className="flex items-center gap-0.5 opacity-40">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${isDarkMode ? 'bg-white' : 'bg-slate-900'}`}></div>
+                                        <div className={`w-2.5 h-1.5 rounded-[2px] border ${isDarkMode ? 'border-white' : 'border-slate-900'}`}></div>
                                     </div>
                                 </div>
-
-                                {/* Simulated Notch */}
-                                <div className={`absolute top-1 left-1/2 -translate-x-1/2 w-14 h-4 rounded-full ${isDarkMode ? 'bg-[#1e293b]' : 'bg-slate-800'} z-30`}></div>
-
-                                {/* UI Content Mockup */}
-                                <div className="p-3 pt-8 space-y-3 relative z-10 h-full flex flex-col">
-                                    {/* Mock Header */}
+                                <div className={`absolute top-1 left-1/2 -translate-x-1/2 w-10 h-3 rounded-full ${isDarkMode ? 'bg-[#1e293b]' : 'bg-slate-800'} z-30`}></div>
+                                <div className="p-2 pt-6 space-y-2 relative z-10 h-full flex flex-col">
                                     <div className="flex items-center justify-between mb-1">
-                                        <div className={`w-5 h-5 rounded-lg ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} border border-white/10`}></div>
-                                        <div className={`h-2 w-16 rounded-full ${isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]'} opacity-30`}></div>
-                                        <div className={`w-5 h-5 rounded-lg ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} border border-white/10`}></div>
+                                        <div className={`w-4 h-4 rounded-md ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} border border-white/10`}></div>
+                                        <div className={`h-1.5 w-12 rounded-full ${isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]'} opacity-30`}></div>
+                                        <div className={`w-4 h-4 rounded-md ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} border border-white/10`}></div>
                                     </div>
-
-                                    {/* Mock Search */}
-                                    <div className={`w-full h-8 rounded-xl ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} border flex items-center px-2 gap-2`}>
-                                        <div className={`w-2 h-2 rounded-full ${isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]'}`}></div>
-                                        <div className={`h-1.5 w-12 rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-slate-200'}`}></div>
+                                    <div className={`w-full h-6 rounded-lg ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} border flex items-center px-1.5 gap-1.5`}>
+                                        <div className={`w-1.5 h-1.5 rounded-full ${isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]'}`}></div>
+                                        <div className={`h-1 w-10 rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-slate-200'}`}></div>
                                     </div>
-
-                                    {/* Mock Categories */}
-                                    <div className="flex gap-2">
-                                        {[1, 2, 3].map(i => (
-                                            <div key={i} className={`w-8 h-8 rounded-xl ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} border border-white/5 flex items-center justify-center`}>
-                                                <div className={`w-3 h-3 rounded-full ${i === 1 ? (isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]') : (isDarkMode ? 'bg-white/10' : 'bg-slate-100')}`}></div>
+                                    <div className="flex gap-1.5">
+                                        {[1,2,3].map(i => (
+                                            <div key={i} className={`w-6 h-6 rounded-lg ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} border border-white/5 flex items-center justify-center`}>
+                                                <div className={`w-2.5 h-2.5 rounded-full ${i===1 ? (isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]') : (isDarkMode ? 'bg-white/10' : 'bg-slate-100')}`}></div>
                                             </div>
                                         ))}
                                     </div>
-
-                                    {/* Mock Service Card */}
-                                    <div className={`flex-1 rounded-[22px] ${isDarkMode ? 'bg-[#59CBC8]/5 border-[#59CBC8]/20' : 'bg-white border-slate-200 shadow-md'} border overflow-hidden p-2 flex flex-col gap-2`}>
-                                        <div className={`h-16 rounded-2xl ${isDarkMode ? 'bg-gradient-to-br from-[#59CBC8]/20 to-transparent' : 'bg-gradient-to-br from-[#00D1FF]/10 to-transparent'}`}></div>
-                                        <div className="space-y-1.5 px-1">
-                                            <div className={`h-2 w-16 rounded-full ${isDarkMode ? 'bg-white/20' : 'bg-slate-300'}`}></div>
-                                            <div className={`h-1.5 w-10 rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-slate-100'}`}></div>
-                                        </div>
-                                        <div className="mt-auto flex justify-between px-1 pb-1">
-                                            <div className={`w-4 h-4 rounded-lg ${isDarkMode ? 'bg-white/10' : 'bg-slate-100'}`}></div>
-                                            <div className={`h-4 w-10 rounded-lg ${isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]'} opacity-40`}></div>
+                                    <div className={`flex-1 rounded-[16px] ${isDarkMode ? 'bg-[#59CBC8]/5 border-[#59CBC8]/20' : 'bg-white border-slate-200 shadow-md'} border overflow-hidden p-1.5 flex flex-col gap-1.5`}>
+                                        <div className={`h-12 rounded-xl ${isDarkMode ? 'bg-gradient-to-br from-[#59CBC8]/20 to-transparent' : 'bg-gradient-to-br from-[#00D1FF]/10 to-transparent'}`}></div>
+                                        <div className="space-y-1 px-1">
+                                            <div className={`h-1.5 w-12 rounded-full ${isDarkMode ? 'bg-white/20' : 'bg-slate-300'}`}></div>
+                                            <div className={`h-1 w-8 rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-slate-100'}`}></div>
                                         </div>
                                     </div>
-
-                                    {/* Mock Bottom Tabs (hidden behind footer area) */}
-                                    <div className={`absolute bottom-0 left-0 right-0 h-10 ${isDarkMode ? 'bg-[#020617]/80' : 'bg-white/80'} backdrop-blur-sm border-t border-white/5 flex items-center justify-around px-4`}>
-                                        {[1, 2, 3, 4].map(i => (
-                                            <div key={i} className={`w-1.5 h-1.5 rounded-full ${i === 2 ? (isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]') : (isDarkMode ? 'bg-white/20' : 'bg-slate-300')}`}></div>
+                                    <div className={`absolute bottom-0 left-0 right-0 h-8 ${isDarkMode ? 'bg-[#020617]/80' : 'bg-white/80'} backdrop-blur-sm border-t border-white/5 flex items-center justify-around px-3`}>
+                                        {[1,2,3,4].map(i => (
+                                            <div key={i} className={`w-1 h-1 rounded-full ${i===2 ? (isDarkMode ? 'bg-[#59CBC8]' : 'bg-[#00D1FF]') : (isDarkMode ? 'bg-white/20' : 'bg-slate-300')}`}></div>
                                         ))}
                                     </div>
                                 </div>
-
-                                {/* Floating Glossy Refraction Effect */}
                                 <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/5 blur-3xl rounded-full"></div>
                             </div>
                         </div>
 
-                        <div>
-                            <h4 className={`text-[10px] font-black uppercase tracking-[2px] mb-4 ${themeStyles.subtext} ml-2`}>Apariencia</h4>
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={() => setThemeMode?.('dark')}
-                                    className={`flex-1 p-4 rounded-[25px] border-2 flex flex-col items-center gap-3 transition-all ${themeMode === 'dark' ? 'border-[#59CBC8] bg-[#59CBC8]/10' : `border-transparent ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} opacity-50`}`}
-                                >
-                                    <div className="w-8 h-8 text-xl">🌙</div>
-                                    <span className={`text-[10px] font-black uppercase tracking-wider ${themeMode === 'dark' ? (isDarkMode ? 'text-[#59CBC8]' : 'text-slate-900') : themeStyles.subtext}`}>{t.profile_dark_mode}</span>
-                                </button>
-                                <button
-                                    onClick={() => setThemeMode?.('light')}
-                                    className={`flex-1 p-4 rounded-[25px] border-2 flex flex-col items-center gap-3 transition-all ${themeMode === 'light' ? 'border-[#59CBC8] bg-[#59CBC8]/10' : `border-transparent ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} opacity-50`}`}
-                                >
-                                    <div className="w-8 h-8 text-xl">☀️</div>
-                                    <span className={`text-[10px] font-black uppercase tracking-wider ${themeMode === 'light' ? (isDarkMode ? 'text-[#59CBC8]' : 'text-slate-900') : themeStyles.subtext}`}>{t.profile_light_mode}</span>
-                                </button>
-                                <button
-                                    onClick={() => setThemeMode?.('system')}
-                                    className={`flex-1 p-4 rounded-[25px] border-2 flex flex-col items-center gap-3 transition-all ${themeMode === 'system' ? 'border-[#59CBC8] bg-[#59CBC8]/10' : `border-transparent ${isDarkMode ? 'bg-white/5' : 'bg-white shadow-sm'} opacity-50`}`}
-                                >
-                                    <div className="w-8 h-8 text-xl">⚙️</div>
-                                    <span className={`text-[10px] font-black uppercase tracking-wider ${themeMode === 'system' ? (isDarkMode ? 'text-[#59CBC8]' : 'text-slate-900') : themeStyles.subtext}`}>{t.profile_system || 'Sistema'}</span>
-                                </button>
-                            </div>
+                        {/* Theme Options */}
+                        <div className={`rounded-[25px] ${themeStyles.card} overflow-hidden divide-y divide-white/5 shadow-xl`}>
+                            <button onClick={() => setThemeMode?.('dark')} className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-all group">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                                        <Moon size={20} className="text-[#59CBC8]" />
+                                    </div>
+                                    <div className="text-left">
+                                        <p className={`font-black text-sm uppercase tracking-tight ${themeStyles.text}`}>{t.profile_dark_mode || 'Oscuro'}</p>
+                                        <p className={`text-[9px] font-black uppercase tracking-[2px] mt-0.5 ${themeMode === 'dark' ? 'text-[#59CBC8]' : 'text-slate-500/50'}`}>{themeMode === 'dark' ? 'Seleccionado' : ''}</p>
+                                    </div>
+                                </div>
+                                {themeMode === 'dark' && (
+                                    <div className="w-5 h-5 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
+                                        <div className="w-full h-full rounded-full bg-[#59CBC8]"></div>
+                                    </div>
+                                )}
+                            </button>
+                            <button onClick={() => setThemeMode?.('light')} className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-all group">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-xl bg-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                                        <Sun size={20} className="text-yellow-400" />
+                                    </div>
+                                    <div className="text-left">
+                                        <p className={`font-black text-sm uppercase tracking-tight ${themeStyles.text}`}>{t.profile_light_mode || 'Claro'}</p>
+                                        <p className={`text-[9px] font-black uppercase tracking-[2px] mt-0.5 ${themeMode === 'light' ? 'text-[#59CBC8]' : 'text-slate-500/50'}`}>{themeMode === 'light' ? 'Seleccionado' : ''}</p>
+                                    </div>
+                                </div>
+                                {themeMode === 'light' && (
+                                    <div className="w-5 h-5 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
+                                        <div className="w-full h-full rounded-full bg-[#59CBC8]"></div>
+                                    </div>
+                                )}
+                            </button>
+                            <button onClick={() => setThemeMode?.('system')} className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-all group">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-xl bg-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                                        <Monitor size={20} className="text-slate-400" />
+                                    </div>
+                                    <div className="text-left">
+                                        <p className={`font-black text-sm uppercase tracking-tight ${themeStyles.text}`}>{t.profile_system || 'Sistema'}</p>
+                                        <p className={`text-[9px] font-black uppercase tracking-[2px] mt-0.5 ${themeMode === 'system' ? 'text-[#59CBC8]' : 'text-slate-500/50'}`}>{themeMode === 'system' ? 'Seleccionado' : ''}</p>
+                                    </div>
+                                </div>
+                                {themeMode === 'system' && (
+                                    <div className="w-5 h-5 rounded-full border-2 border-[#59CBC8] flex items-center justify-center p-1 bg-[#59CBC8]/10">
+                                        <div className="w-full h-full rounded-full bg-[#59CBC8]"></div>
+                                    </div>
+                                )}
+                            </button>
                         </div>
                     </div>
                 );
@@ -920,65 +923,65 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
             case 'menu':
             default:
                 return (
-                    <div className="px-6 space-y-4 animate-page-in">
+                    <div className="px-5 space-y-3 animate-page-in">
                         {/* Profile Card */}
-                        <div className="flex flex-col items-center pt-2 pb-4">
-                            <div className={`w-32 h-32 rounded-full border-[6px] ${isDarkMode ? 'border-[#00E7DB]' : 'border-[#00D1FF]'} p-1 flex items-center justify-center ${isDarkMode ? 'bg-white/5 shadow-2xl' : 'bg-white shadow-xl'} overflow-hidden mb-4 relative`}>
+                        <div className="flex flex-col items-center pt-0 pb-1">
+                            <div className={`w-20 h-20 rounded-full border-[4px] ${isDarkMode ? 'border-[#00E7DB]' : 'border-[#00D1FF]'} p-1 flex items-center justify-center ${isDarkMode ? 'bg-white/5 shadow-2xl' : 'bg-white shadow-xl'} overflow-hidden mb-1.5 relative`}>
                                 <img src={avatar || 'https://ui-avatars.com/api/?name=' + user.name} className="w-full h-full rounded-full object-cover" alt="Profile" />
                             </div>
-                            <h2 className={`text-2xl font-[1000] tracking-tight ${themeStyles.text}`}>{user.name}</h2>
+                            <h2 className={`text-lg font-[1000] tracking-tight ${themeStyles.text}`}>{user.name}</h2>
                             <div className="flex items-center gap-1 opacity-60">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className={themeStyles.subtext}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" /><circle cx="12" cy="9" r="2.5" /></svg>
-                                <span className={`text-xs font-bold uppercase tracking-widest ${themeStyles.subtext}`}>{canton && province ? `${canton}, ${province}` : canton || province || 'Ecuador'}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className={themeStyles.subtext}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" /><circle cx="12" cy="9" r="2.5" /></svg>
+                                <span className={`text-[10px] font-bold uppercase tracking-widest ${themeStyles.subtext}`}>{canton && province ? `${canton}, ${province}` : canton || province || 'Ecuador'}</span>
                             </div>
                         </div>
 
                         {/* Menu Items */}
-                        <div className={`rounded-[30px] ${themeStyles.card} overflow-hidden divide-y divide-white/5`}>
-                            <button onClick={() => setCurrentView('edit')} className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors group">
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-11 h-11 rounded-2xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
-                                        <UserIcon size={22} />
+                        <div className={`rounded-[22px] ${themeStyles.card} overflow-hidden divide-y divide-white/5`}>
+                            <button onClick={() => setCurrentView('edit')} className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors group">
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
+                                        <UserIcon size={20} />
                                     </div>
                                     <span className={`font-bold text-sm ${themeStyles.text} text-left uppercase tracking-tight`}>{t.profile_edit}</span>
                                 </div>
-                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={20} className="rotate-180" strokeWidth={3} /></div>
+                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={18} className="rotate-180" strokeWidth={3} /></div>
                             </button>
-                            <button onClick={() => setCurrentView('security')} className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors group">
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-11 h-11 rounded-2xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
-                                        <Shield size={22} />
+                            <button onClick={() => setCurrentView('security')} className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors group">
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
+                                        <Shield size={20} />
                                     </div>
                                     <span className={`font-bold text-sm ${themeStyles.text} text-left uppercase tracking-tight`}>{t.profile_security}</span>
                                 </div>
-                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={20} className="rotate-180" strokeWidth={3} /></div>
+                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={18} className="rotate-180" strokeWidth={3} /></div>
                             </button>
-                            <button onClick={() => setCurrentView('settings')} className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors group">
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-11 h-11 rounded-2xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
-                                        <Settings size={22} />
+                            <button onClick={() => setCurrentView('settings')} className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors group">
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
+                                        <Settings size={20} />
                                     </div>
                                     <span className={`font-bold text-sm ${themeStyles.text} text-left uppercase tracking-tight`}>{t.profile_settings}</span>
                                 </div>
-                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={20} className="rotate-180" strokeWidth={3} /></div>
+                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={18} className="rotate-180" strokeWidth={3} /></div>
                             </button>
-                            <button onClick={() => setCurrentView('theme')} className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors group">
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-11 h-11 rounded-2xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
-                                        <Palette size={22} />
+                            <button onClick={() => setCurrentView('theme')} className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors group">
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
+                                        <Palette size={20} />
                                     </div>
                                     <span className={`font-bold text-sm ${themeStyles.text} text-left uppercase tracking-tight`}>{t.profile_theme}</span>
                                 </div>
-                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={20} className="rotate-180" strokeWidth={3} /></div>
+                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={18} className="rotate-180" strokeWidth={3} /></div>
                             </button>
-                            <button onClick={() => onViewLegal?.('terms')} className="w-full p-6 flex items-center justify-between hover:bg-white/5 transition-colors group">
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-11 h-11 rounded-2xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
-                                        <Shield size={22} />
+                            <button onClick={() => onViewLegal?.('terms')} className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors group">
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-xl ${themeStyles.itemBg} flex items-center justify-center ${themeStyles.iconColor} group-hover:scale-110 transition-transform flex-shrink-0 shadow-lg`}>
+                                        <Shield size={20} />
                                     </div>
                                     <span className={`font-bold text-sm ${themeStyles.text} text-left uppercase tracking-tight`}>{t.legal_title_usage || (language === 'es' ? 'Términos y Condiciones' : 'Terms and Conditions')}</span>
                                 </div>
-                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={20} className="rotate-180" strokeWidth={3} /></div>
+                                <div className={isDarkMode ? 'opacity-30' : 'text-[#00D1FF]'}><ArrowLeft size={18} className="rotate-180" strokeWidth={3} /></div>
                             </button>
                         </div>
                     </div>
@@ -987,26 +990,26 @@ const UserProfile: React.FC<Props> = ({ user, onBack, onLogout, onUpdateUser, on
     };
 
     return (
-        <div ref={scrollRef} className={`flex-1 flex flex-col min-h-0 overflow-y-auto pb-40 ${themeStyles.bg} hide-scrollbar`}>
+        <div ref={scrollRef} className={`flex-1 flex flex-col min-h-0 overflow-y-auto pb-6 ${themeStyles.bg} hide-scrollbar`}>
             {/* CABECERA MENTA */}
-            <div className={`relative ${isDarkMode ? 'bg-gradient-to-br from-[#00E7DB] via-[#2DD4BF] to-[#00E7DB]' : 'bg-gradient-to-br from-[#00E7DB] via-[#00D1FF] to-[#00E7DB]'} pt-10 pb-6 rounded-b-[45px] shadow-2xl mb-6`}>
+            <div className={`relative ${isDarkMode ? 'bg-gradient-to-br from-[#00E7DB] via-[#2DD4BF] to-[#00E7DB]' : 'bg-gradient-to-br from-[#00E7DB] via-[#00D1FF] to-[#00E7DB]'} pt-6 pb-3 rounded-b-[35px] shadow-2xl mb-3`}>
                 <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
-                <header className="px-8 flex flex-col relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                        <button onClick={currentView === 'menu' ? onBack : () => setCurrentView('menu')} className={`w-12 h-12 rounded-[18px] flex items-center justify-center transition-all active:scale-90 border bg-white shadow-xl border-white/60`}>
+                <header className="px-6 flex flex-col relative z-10">
+                    <div className="flex items-center justify-between mb-3">
+                        <button onClick={currentView === 'menu' ? onBack : () => setCurrentView('menu')} className={`w-10 h-10 rounded-[14px] flex items-center justify-center transition-all active:scale-90 border bg-white shadow-xl border-white/60`}>
                             <ArrowLeft size={20} className="text-slate-900" strokeWidth={3} />
                         </button>
 
-                        <h1 className="text-[18px] xs:text-[21px] font-[1000] tracking-tighter italic leading-none select-none whitespace-nowrap ml-4">
+                        <h1 className="text-[16px] xs:text-[18px] font-[1000] tracking-tighter italic leading-none select-none whitespace-nowrap ml-4">
                             <span className="text-[#0f172a] drop-shadow-sm">CONEXIÓN </span>
                             <span className="text-white drop-shadow-md">SERVICIOS</span>
                         </h1>
 
-                        <div className="w-12"></div>
+                        <div className="w-10"></div>
                     </div>
 
                     <div className="flex flex-col items-center px-2 w-full text-center">
-                        <h2 className={`text-[32px] xs:text-[36px] font-[1000] uppercase tracking-tighter text-white drop-shadow-lg leading-none w-full break-words whitespace-normal text-center flex flex-col items-center`}>
+                        <h2 className={`text-[28px] xs:text-[32px] font-[1000] uppercase tracking-tighter text-white drop-shadow-lg leading-none w-full break-words whitespace-normal text-center flex flex-col items-center`}>
                             {currentView === 'menu' ? t.profile_title :
                                 currentView === 'edit' ? t.profile_edit :
                                     currentView === 'security' ? t.profile_security :

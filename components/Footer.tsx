@@ -29,9 +29,9 @@ const Footer: React.FC<FooterProps> = ({
     t
 }) => {
     return (
-        <div className="fixed left-0 right-0 bottom-0 z-50 pointer-events-none ios-floating-footer">
-            {/* Background with rounded top and decreased vertical padding */}
-            <div className={`pointer-events-auto h-[54px] rounded-t-[24px] ${isDarkMode ? 'bg-[#0f172a]/95' : 'bg-[#0f172a]/95'} backdrop-blur-md border-t border-white/5 flex items-center justify-between px-2 py-0 relative shadow-[0_-5px_15px_rgba(0,0,0,0.3)]`}>
+        <div className="fixed left-0 right-0 z-50 pointer-events-none" style={{ bottom: 'env(safe-area-inset-bottom, 0px)' }}>
+            {/* Background with rounded top and original height */}
+            <div className={`pointer-events-auto h-[54px] rounded-t-[24px] ${isDarkMode ? 'bg-[#0f172a]/95' : 'bg-[#0f172a]/95'} backdrop-blur-md border-t border-white/5 flex items-center justify-between px-2 relative shadow-[0_-5px_15px_rgba(0,0,0,0.3)]`}>
                 
                 {/* INICIO */}
                 <button

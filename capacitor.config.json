@@ -10,6 +10,10 @@
     "backgroundColor": "#020617"
   },
   "plugins": {
+    "Keyboard": {
+      "resize": "body",
+      "resizeOnFullScreen": true
+    },
     "FirebaseAuthentication": {
       "skipNativeAuth": false,
       "providers": [

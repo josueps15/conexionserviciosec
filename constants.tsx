@@ -346,8 +346,8 @@ export const ADMIN_CREDENTIALS = {
 };
 
 export const WHATSAPP_CONFIG = {
-  number: '593987246441',
-  displayNumber: '+593 98 724 6441',
+  number: '593979783184',
+  displayNumber: '+593 97 978 3184',
   adminName: 'Administración Matriz',
   defaultMessage: 'Hola, quisiera ponerme en contacto con la Administración Matriz para publicar mi servicio en la app de Services.'
 };

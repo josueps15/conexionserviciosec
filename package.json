@@ -1,7 +1,7 @@
 {
   "name": "conexion-servicios",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.4",
   "description": "App de Servicios Ecuador Profesional",
   "type": "module",
   "scripts": {
@@ -19,6 +19,7 @@
     "@capacitor/core": "^6.2.1",
     "@capacitor/geolocation": "^6.1.1",
     "@capacitor/ios": "^6.2.0",
+    "@capacitor/keyboard": "^6.0.4",
     "@capacitor/network": "^6.0.4",
     "@capacitor/push-notifications": "^6.0.5",
     "@google/genai": "^1.35.0",

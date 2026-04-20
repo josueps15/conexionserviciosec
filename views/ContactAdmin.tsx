@@ -14,8 +14,8 @@ const ContactAdmin: React.FC<Props> = ({ direction = 'forward', isDarkMode, onBa
    const theme = {
       bg: isDarkMode ? 'bg-[#020617]' : 'bg-[#F8FAFC]',
       headerBg: isDarkMode
-         ? 'bg-gradient-to-br from-[#FFB800] via-[#FFD152] to-[#FFB800]'
-         : 'bg-gradient-to-br from-[#FFB800] via-[#FFE5A0] to-[#FFB800]',
+         ? 'bg-[#0891b2]'  // Cyan-600
+         : 'bg-[#06b6d4]', // Cyan-500
       text: isDarkMode ? 'text-white' : 'text-[#0F172A]',
       subtext: isDarkMode ? 'text-white/60' : 'text-[#475569]',
       card: isDarkMode ? 'bg-white/5 border-white/10 shadow-xl' : 'bg-white border-slate-200 shadow-sm',
@@ -46,11 +46,11 @@ const ContactAdmin: React.FC<Props> = ({ direction = 'forward', isDarkMode, onBa
                </div>
 
                <div className="flex flex-col items-center px-2">
-                  <div className="flex items-center gap-2 mb-3 opacity-70">
-                     <Rocket size={12} className="text-slate-900" strokeWidth={3} />
-                     <span className="text-[10px] font-black uppercase tracking-[3px] text-slate-900">{t.contact_boost}</span>
+                  <div className="flex items-center gap-2 mb-3 opacity-90">
+                     <Rocket size={12} className="text-white" strokeWidth={3} />
+                     <span className="text-[10px] font-black uppercase tracking-[3px] text-white">{t.contact_boost}</span>
                   </div>
-                  <h2 className="font-[1000] uppercase tracking-tighter text-slate-900 drop-shadow-md leading-none text-[40px] text-center">{t.contact_title}</h2>
+                  <h2 className="font-[1000] uppercase tracking-tighter text-white drop-shadow-md leading-none text-[40px] text-center">{t.contact_title}</h2>
 
                   {/* HERO IMAGE PROFESIONALES */}
                   <div className="w-full relative mt-6 -mb-20 z-20 flex justify-center pointer-events-none">

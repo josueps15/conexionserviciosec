@@ -244,13 +244,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
     setLoading(true);
     setError('');
 
-    console.log("🛠 [DEBUG] Login Attempt (Robust):", { 
-      email: cleanEmail, 
-      passLength: cleanPassword.length,
-      emailMatch: cleanEmail === ADMIN_CREDENTIALS.email.toLowerCase(),
-      passMatch: cleanPassword === ADMIN_CREDENTIALS.password,
-      mode 
-    });
+    // Log statement removed for production
 
     // 1. VALIDACIÓN ACCESO ADMIN MAESTRO (HARDCODED)
     if (mode === 'login' && cleanEmail === ADMIN_CREDENTIALS.email.toLowerCase() && cleanPassword === ADMIN_CREDENTIALS.password) {
@@ -374,14 +368,14 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
 
   return (
     <div 
-      className={`fixed inset-0 overflow-x-hidden overflow-y-auto ${isDarkMode ? 'bg-[#060b15]' : 'bg-slate-50'} flex flex-col p-8 xs:p-10 ios-safe-pt ios-safe-pb`}
+      className={`fixed inset-0 overflow-x-hidden overflow-y-auto ${isDarkMode ? 'bg-[#060b15]' : 'bg-slate-50'} flex flex-col p-6 pb-4 ios-safe-pt ios-safe-pb`}
       style={{
         isolation: 'isolate'
       }}
     >
       <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-md aspect-square ${isDarkMode ? 'bg-[radial-gradient(circle_at_center,_rgba(89,203,200,0.1)_0%,_transparent_60%)]' : 'bg-[radial-gradient(circle_at_center,_rgba(0,209,255,0.1)_0%,_transparent_60%)]'} opacity-40 pointer-events-none select-none`}></div>
 
-      <div className={`flex items-center justify-between mb-8 relative z-20 ${!animationFinished ? 'animate-slide-up' : ''}`}>
+      <div className={`flex items-center justify-between mb-4 relative z-20 ${!animationFinished ? 'animate-slide-up' : ''}`}>
         <button
           onClick={handleBackAction}
           className={`w-12 h-12 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-2xl'} ${primaryTextClass} rounded-[18px] border active:scale-90 transition-all flex items-center justify-center`}
@@ -394,8 +388,8 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
         </div>
       </div>
 
-      <div className={`mb-8 relative z-20 text-center ${!animationFinished ? 'animate-slide-up stagger-1' : ''}`}>
-        <h2 className={`text-[48px] xs:text-[54px] font-[1000] tracking-tighter leading-[0.9] uppercase mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'} whitespace-pre-line transition-all duration-300`}>
+      <div className={`mb-4 relative z-20 text-center ${!animationFinished ? 'animate-slide-up stagger-1' : ''}`}>
+        <h2 className={`text-[42px] xs:text-[48px] font-[1000] tracking-tighter leading-[0.9] uppercase mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'} whitespace-pre-line transition-all duration-300`}>
           {mode === 'login' ? (
             <>
               {t.auth_title_login.split('\n')[0]}<br />
@@ -408,7 +402,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
             </>
           )}
         </h2>
-        <div className={`h-1.5 w-14 ${primaryBgClass} rounded-full mt-6 mx-auto select-none`}></div>
+        <div className={`h-1.5 w-14 ${primaryBgClass} rounded-full mt-3 mx-auto select-none`}></div>
       </div>
 
       {error && (
@@ -420,18 +414,18 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className={`block space-y-4 mb-2 relative z-20 w-full ${!animationFinished ? 'animate-slide-up stagger-2' : ''}`}>
+      <form onSubmit={handleSubmit} className={`block space-y-3 mb-2 relative z-20 w-full flex-1 flex flex-col justify-center ${!animationFinished ? 'animate-slide-up stagger-2' : ''}`}>
         {mode === 'register' && (
-          <div className={`w-full h-16 relative rounded-[30px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10`}>
+          <div className={`w-full h-14 relative rounded-[26px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10`}>
             {/* ICONO IZQUIERDA */}
-            <div className="absolute left-0 top-0 w-16 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
+            <div className="absolute left-0 top-0 w-14 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
               <UserIcon size={18} className={isDarkMode ? 'text-white' : 'text-slate-900'} />
             </div>
             {/* INPUT CALIBRADO */}
             <input
               type="text" 
               placeholder={t.auth_name}
-              className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-16 pr-6`}
+              className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-14 pr-6`}
               value={name} 
               onChange={(e) => setName(e.target.value.slice(0, 50))} 
               onSelect={(e) => {
@@ -450,9 +444,9 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
           </div>
         )}
 
-        <div className={`w-full h-16 relative rounded-[30px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10`}>
+        <div className={`w-full h-14 relative rounded-[26px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10`}>
           {/* ICONO IZQUIERDA */}
-          <div className="absolute left-0 top-0 w-16 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
+          <div className="absolute left-0 top-0 w-14 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
             <Mail size={18} className={isDarkMode ? 'text-white' : 'text-slate-900'} />
           </div>
           
@@ -460,7 +454,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
             ref={emailRef}
             type="text" 
             placeholder={t.auth_email}
-            className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-16 pr-4`}
+            className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-14 pr-4`}
             value={email} 
             onChange={(e) => setEmail(e.target.value.slice(0, 100))}
             onSelect={(e) => {
@@ -476,9 +470,9 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
           />
         </div>
 
-        <div className={`w-full h-16 relative rounded-[30px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10`}>
+        <div className={`w-full h-14 relative rounded-[26px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10`}>
           {/* ICONO IZQUIERDA */}
-          <div className="absolute left-0 top-0 w-16 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
+          <div className="absolute left-0 top-0 w-14 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
             <Lock size={18} className={isDarkMode ? 'text-white' : 'text-slate-900'} />
           </div>
           
@@ -486,7 +480,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
             ref={passwordRef}
             type={showPassword ? "text" : "password"} 
             placeholder={t.auth_pass}
-            className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-16 pr-16`}
+            className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-14 pr-14`}
             value={password} 
             onChange={(e) => setPassword(e.target.value.slice(0, 64))} 
             onSelect={(e) => {
@@ -500,7 +494,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
           />
           
           {/* ACCIÓN DERECHA (EL OJITO SE QUEDA AQUÍ) */}
-          <div className="absolute right-0 top-0 w-16 h-full flex items-center justify-center z-20">
+          <div className="absolute right-0 top-0 w-14 h-full flex items-center justify-center z-20">
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
@@ -512,7 +506,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
         </div>
 
         {mode === 'login' && (
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-2 mb-2">
             <button
               type="button"
               onClick={handleResetPassword}
@@ -525,16 +519,16 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
 
         {mode === 'register' && (
           <>
-            <div className={`w-full h-16 relative rounded-[30px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10 ${confirmPassword && password !== confirmPassword ? 'border-red-500/50' : ''}`}>
+            <div className={`w-full h-14 relative rounded-[26px] border transition-all ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} focus-within:${primaryBorderClass} focus-within:ring-2 focus-within:ring-${primaryColor}/10 ${confirmPassword && password !== confirmPassword ? 'border-red-500/50' : ''}`}>
               {/* ICONO IZQUIERDA */}
-              <div className="absolute left-0 top-0 w-16 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
+              <div className="absolute left-0 top-0 w-14 h-full flex items-center justify-center pointer-events-none z-10 opacity-60">
                 <Lock className={isDarkMode ? 'text-white/60' : 'text-slate-400'} size={18} />
               </div>
               
               <input
                 type="password" 
                 placeholder={t.auth_confirm_pass}
-                className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-16 pr-6`}
+                className={`w-full h-full bg-transparent outline-none font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'} placeholder-slate-500 pl-14 pr-6`}
                 value={confirmPassword} 
                 onChange={(e) => setConfirmPassword(e.target.value.slice(0, 64))}
                 onSelect={(e) => {
@@ -548,7 +542,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
             </div>
 
             {/* CHECKBOX LEGAL */}
-            <div className="pt-2 px-2">
+            <div className="pt-2 px-2 pb-2">
               <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="relative pt-0.5">
                   <input
@@ -561,7 +555,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
                     {acceptedTerms && <Check size={12} className={isDarkMode ? 'text-slate-900' : 'text-white'} strokeWidth={4} />}
                   </div>
                 </div>
-                <div className={`flex-1 text-[10px] ${isDarkMode ? 'text-white/60' : 'text-slate-500'} font-medium leading-relaxed select-none`}>
+                <div className={`flex-1 text-[9px] leading-tight ${isDarkMode ? 'text-white/60' : 'text-slate-500'} font-medium select-none`}>
                   {t.auth_legal_1} <span onClick={(e) => { e.preventDefault(); onViewLegal?.('terms'); }} className={`${primaryTextClass} font-bold uppercase hover:underline cursor-pointer`}>{t.auth_legal_2}</span> {t.auth_legal_3} <span onClick={(e) => { e.preventDefault(); onViewLegal?.('privacy'); }} className={`${primaryTextClass} font-bold uppercase hover:underline cursor-pointer`}>{t.auth_legal_4}</span>{t.auth_legal_5}
                 </div>
               </label>
@@ -572,7 +566,7 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
         {/* BOTÓN DE ACCIÓN PRINCIPAL */}
         <button
           type="submit" disabled={loading}
-          className={`w-full h-16 ${primaryBgClass} text-slate-900 font-black rounded-full ${primaryShadowClass} transition-all active:scale-[0.96] text-[15px] tracking-[4px] uppercase flex items-center justify-center gap-4 mt-8`}
+          className={`w-full h-14 ${primaryBgClass} text-slate-900 font-black rounded-full ${primaryShadowClass} transition-all active:scale-[0.96] text-[14px] tracking-[3px] uppercase flex items-center justify-center gap-4 mt-4`}
         >
           {loading ? <Loader2 className="animate-spin" /> : (mode === 'login' ? t.auth_btn_login : t.auth_btn_register)}
           {!loading && <ChevronRight size={20} strokeWidth={4} />}
@@ -580,89 +574,87 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
 
         {/* BOTÓN EXPLORAR - Color NARANJA (#FFB800) */}
         {mode === 'login' && (
-          <div className="mt-4">
+          <div className="mt-2">
             <button
               type="button"
               onClick={handleGuestLogin}
               className={`
-                w-full h-16 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} border rounded-full px-4
+                w-full h-14 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'} border rounded-full px-4
                 flex items-center active:scale-[0.98] transition-all group overflow-hidden
                 shadow-lg backdrop-blur-sm relative
               `}
             >
-              <div className="w-11 h-11 bg-[#FFB800]/20 rounded-full flex items-center justify-center text-[#FFB800] shrink-0 border border-[#FFB800]/30">
-                <Compass size={22} strokeWidth={3} />
+              <div className="w-10 h-10 bg-[#FFB800]/20 rounded-full flex items-center justify-center text-[#FFB800] shrink-0 border border-[#FFB800]/30">
+                <Compass size={20} strokeWidth={3} />
               </div>
 
-              <div className="flex-1 text-center pr-11">
-                <span className={`block text-[13px] xs:text-[14px] font-black ${isDarkMode ? 'text-white' : 'text-slate-900'} uppercase tracking-[2px] leading-none`}>
+              <div className="flex-1 text-center pr-10">
+                <span className={`block text-[12px] font-black ${isDarkMode ? 'text-white' : 'text-slate-900'} uppercase tracking-[2px] leading-none`}>
                   {t.auth_explore_1}
                 </span>
-                <span className="block text-[10px] text-[#FFB800] font-black uppercase tracking-widest leading-none mt-1.5 opacity-90">
+                <span className="block text-[9px] text-[#FFB800] font-black uppercase tracking-widest leading-none mt-1 opacity-90">
                   {t.auth_explore_2}
                 </span>
               </div>
 
-              <div className={`absolute right-6 top-1/2 -translate-y-1/2 ${isDarkMode ? 'text-white/30' : 'text-slate-300'} group-hover:text-[#FFB800] transition-colors`}>
-                <ChevronRight size={20} strokeWidth={4} />
+              <div className={`absolute right-4 top-1/2 -translate-y-1/2 ${isDarkMode ? 'text-white/30' : 'text-slate-300'} group-hover:text-[#FFB800] transition-colors`}>
+                <ChevronRight size={18} strokeWidth={4} />
               </div>
             </button>
           </div>
         )}
 
         {/* SOCIAL LOGIN SECTION PROFESIONAL */}
-        <div className="pt-6 pb-2 flex flex-col gap-4">
-          <div className="flex items-center gap-4 mb-2">
+        <div className="pt-2 pb-0 flex flex-col gap-3">
+          <div className="flex items-center gap-3 mb-1">
             <div className={`h-[1px] flex-1 ${isDarkMode ? 'bg-white/10' : 'bg-slate-200'}`}></div>
             <span className={`text-[8px] font-black ${isDarkMode ? 'text-white/40' : 'text-slate-400'} uppercase tracking-[4px]`}>{t.auth_social_text}</span>
             <div className={`h-[1px] flex-1 ${isDarkMode ? 'bg-white/10' : 'bg-slate-200'}`}></div>
           </div>
 
-          <div className="w-full">
-            {/* BOTÓN GOOGLE PROFESIONAL (Blanco + Logo Oficial) */}
+          <div className="w-full flex gap-3 mt-1">
+            {/* BOTÓN GOOGLE PROFESIONAL */}
             <button
               type="button"
               disabled={loading}
               onClick={() => handleSocialLogin('google')}
-              className="w-full h-14 bg-white rounded-[25px] flex items-center justify-center gap-3 active:scale-95 transition-all shadow-lg hover:bg-gray-50 disabled:opacity-50 border border-slate-200"
+              className="flex-1 h-12 bg-white rounded-[20px] flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg hover:bg-gray-50 disabled:opacity-50 border border-slate-200"
             >
-              {loading ? <Loader2 size={20} className="animate-spin text-slate-900" /> : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {loading ? <Loader2 size={18} className="animate-spin text-slate-900" /> : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M23.52 12.29C23.52 11.44 23.44 10.62 23.29 9.82H12V14.45H18.46C18.18 15.93 17.33 17.18 16.07 18.02V20.98H19.94C22.2 18.9 23.52 15.83 23.52 12.29Z" fill="#4285F4" />
                   <path d="M12 24C15.24 24 17.96 22.92 19.94 20.98L16.07 18.02C15 18.74 13.62 19.16 12 19.16C8.87 19.16 6.22 17.05 5.27 14.19H1.27V17.29C3.26 21.24 7.34 24 12 24Z" fill="#34A853" />
                   <path d="M5.27 14.19C5.03 13.48 4.89 12.75 4.89 12C4.89 11.25 5.03 10.52 5.27 9.81V6.71H1.27C0.46 8.33 0 10.11 0 12C0 13.89 0.46 15.67 1.27 17.29L5.27 14.19Z" fill="#FBBC05" />
                   <path d="M12 4.84C13.76 4.84 15.34 5.45 16.58 6.64L20.03 3.19C17.96 1.25 15.24 0 12 0C7.34 0 3.26 2.76 1.27 6.71L5.27 9.81C6.22 6.95 8.87 4.84 12 4.84Z" fill="#EA4335" />
                 </svg>
               )}
-              <span className="text-[11px] font-black text-slate-800 uppercase tracking-wider">{t.auth_google}</span>
+              <span className="text-[11px] font-black text-slate-800 uppercase tracking-wider">{t.auth_google || 'Google'}</span>
             </button>
 
-            {/* BOTÓN APPLE PROFESIONAL (Solo visible en iOS) */}
-            {Capacitor.getPlatform() === 'ios' && (
-              <button
-                type="button"
-                disabled={loading}
-                onClick={() => handleSocialLogin('apple')}
-                className={`w-full mt-3 h-14 rounded-[25px] flex items-center justify-center gap-3 active:scale-95 transition-all shadow-lg disabled:opacity-50 border ${isDarkMode ? 'bg-white text-black border-transparent' : 'bg-black text-white border-transparent'}`}
-              >
-                {loading ? <Loader2 size={20} className={`animate-spin ${isDarkMode ? 'text-black' : 'text-white'}`} /> : (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.12 3.805 3.052 1.527-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.675-2.935 1.156-1.688 1.636-3.325 1.662-3.415-.026-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.091-3.623-2.324-4.39-2.376-2.04-.156-4.004 1.078-4.622 1.078zM15.549 4.39C16.388 3.376 16.953 1.96 16.8 0 15.111.066 13.566.988 12.656 2.066c-.852.981-1.527 2.42-1.332 3.844 1.864.143 3.33-1.014 4.225-1.52z"/>
-                  </svg>
-                )}
-                <span className="text-[11px] font-black uppercase tracking-wider">Continuar con Apple</span>
-              </button>
-            )}
+            {/* BOTÓN APPLE PROFESIONAL */}
+            <button
+              type="button"
+              disabled={loading}
+              onClick={() => handleSocialLogin('apple')}
+              className={`flex-1 h-12 rounded-[20px] flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg disabled:opacity-50 border ${isDarkMode ? 'bg-white text-black border-transparent' : 'bg-black text-white border-transparent'}`}
+            >
+              {loading ? <Loader2 size={18} className={`animate-spin ${isDarkMode ? 'text-black' : 'text-white'}`} /> : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.12 3.805 3.052 1.527-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.675-2.935 1.156-1.688 1.636-3.325 1.662-3.415-.026-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.091-3.623-2.324-4.39-2.376-2.04-.156-4.004 1.078-4.622 1.078zM15.549 4.39C16.388 3.376 16.953 1.96 16.8 0 15.111.066 13.566.988 12.656 2.066c-.852.981-1.527 2.42-1.332 3.844 1.864.143 3.33-1.014 4.225-1.52z"/>
+                </svg>
+              )}
+              <span className="text-[11px] font-black uppercase tracking-wider">Apple</span>
+            </button>
           </div>
         </div>
       </form>
 
-      <div className="mt-1 text-center pb-10 relative z-20">
+      <div className="mt-1 text-center pb-2 relative z-20">
         <button onClick={handleSwitchAction} className="group">
-          <p className={`text-[10px] font-black uppercase tracking-[4px] mb-4 group-hover:${primaryTextClass} transition-colors ${isDarkMode ? 'text-white/60' : 'text-slate-400'}`}>
+          <p className={`text-[9px] font-black uppercase tracking-[4px] mb-2 group-hover:${primaryTextClass} transition-colors ${isDarkMode ? 'text-white/60' : 'text-slate-400'}`}>
             {mode === 'login' ? t.auth_switch_new : t.auth_switch_existing}
           </p>
-          <span className={`${primaryTextClass} font-black text-sm uppercase tracking-[4px] border-b-2 ${primaryBorderClass}/40 pb-1 group-hover:${primaryBorderClass} transition-all`}>
+          <span className={`${primaryTextClass} font-black text-xs uppercase tracking-[4px] border-b-2 ${primaryBorderClass}/40 pb-1 group-hover:${primaryBorderClass} transition-all`}>
             {mode === 'login' ? t.auth_switch_btn_register : t.auth_switch_btn_login}
           </span>
         </button>

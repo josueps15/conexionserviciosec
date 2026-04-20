@@ -16,67 +16,11 @@
   <script>
     // Polyfill process.env for browser environment
     window.process = { env: { API_KEY: '' } };
-
-    // Nuclear Fallback: Detect system back button/gesture at DOM level
-    // Universal DOM Listener for Hardware Back Button
-    const handleDOMBack = () => window.history.back();
-    document.addEventListener('backbutton', handleDOMBack, false);
-    document.addEventListener('backButton', handleDOMBack, false);
   </script>
 </head>
 
 <body class="bg-[#020617] text-white antialiased">
-  <div id="root">
-    <div
-      style="position:fixed; inset:0; background-color:#020617; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; font-family:system-ui, -apple-system, sans-serif;">
-      <!-- Background Glow -->
-      <div
-        style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:140vw; height:140vw; background:radial-gradient(circle, rgba(89,203,200,0.15) 0%, transparent 70%); pointer-events:none;">
-      </div>
-
-      <div style="position:relative; z-index:10; display:flex; flex-direction:column; align-items:center;">
-        <!-- Logo Container -->
-        <div
-          style="position:relative; width:192px; height:192px; background-color:white; border-radius:45px; box-shadow:0 0 100px rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center;">
-          <img src="/logo-new.png" style="width:100%; height:100%; object-fit:contain; padding:4px; border-radius:35px;"
-            alt="Logo" />
-        </div>
-
-        <!-- Title Section -->
-        <div style="margin-top:80px; text-align:center;">
-          <h1
-            style="color:white; font-size:40px; font-weight:900; letter-spacing:-0.05em; line-height:0.9; text-transform:uppercase; margin:0 0 8px 0;">
-            CONEXIÓN<br /><span style="color:#59CBC8;">SERVICIOS</span>
-          </h1>
-          <p
-            style="color:rgba(255,255,255,0.6); font-size:10px; font-weight:900; letter-spacing:8px; text-transform:uppercase; margin:0;">
-            RED PROFESIONAL 2026</p>
-        </div>
-      </div>
-
-      <!-- Connecting status placeholder -->
-      <div
-        style="position:absolute; bottom:64px; left:0; right:0; display:flex; flex-direction:column; align-items:center; padding:0 40px;">
-        <div
-          style="display:flex; align-items:center; justify-content:center; gap:12px; padding:16px 24px; border-radius:16px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);">
-          <div
-            style="width:16px; height:16px; border:2px solid #59CBC8; border-top-color:transparent; border-radius:50%; animation: spin 1s linear infinite;">
-          </div>
-          <span
-            style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.8); text-transform:uppercase; letter-spacing:2px;">Iniciando
-            sistema...</span>
-        </div>
-      </div>
-
-      <style>
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      </style>
-    </div>
-  </div>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
 

@@ -97,7 +97,6 @@ const SubcategorySelect: React.FC<Props> = ({
           <div className="absolute -bottom-6 left-0 right-0 px-8 z-50 pointer-events-none">
             <button
               onClick={() => {
-                console.log("Search clicked in SubcategorySelect");
                 onOpenSearch && onOpenSearch();
               }}
               className={`flex items-center w-full h-14 px-6 rounded-[26px] ${theme.input} active:scale-[0.98] transition-all duration-300 text-left pointer-events-auto`}

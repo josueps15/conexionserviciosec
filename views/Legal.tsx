@@ -53,7 +53,7 @@ const Legal: React.FC<Props> = ({ direction = 'forward', isDarkMode, type, onBac
             </div>
           </div>
 
-          <h2 className="font-[1000] uppercase tracking-tighter text-slate-900 drop-shadow-md leading-[0.9] text-[32px]">
+          <h2 className="font-[1000] uppercase tracking-tighter text-slate-900 drop-shadow-md leading-[0.9] text-[32px] text-center w-full">
             {type === 'terms' ? t.legal_title_usage.split(' ')[0] : t.legal_title_protection.split(' ')[0]} <br />
             {type === 'terms' ? t.legal_title_usage.split(' ').slice(1).join(' ') : t.legal_title_protection.split(' ').slice(1).join(' ')}
           </h2>

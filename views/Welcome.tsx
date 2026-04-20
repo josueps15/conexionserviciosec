@@ -179,7 +179,7 @@ const Welcome: React.FC<Props> = ({ direction = 'forward', categories, onLogin, 
 
         <button
           onClick={onContactAdmin}
-          className={`w-full max-w-sm h-16 bg-gradient-to-br from-[#FFB800] via-[#FFD152] to-[#FFB800] text-[#0F172A] rounded-full active:scale-[0.97] transition-all flex items-center px-4 group relative overflow-hidden ${theme.shadowSecondary}`}
+          className={`w-full max-w-sm h-16 bg-[#F97316] text-white rounded-full active:scale-[0.97] transition-all flex items-center px-4 group relative overflow-hidden shadow-[0_10px_30px_rgba(249,115,22,0.25)] dark:shadow-[0_10px_30px_rgba(249,115,22,0.15)]`}
         >
           <div className="w-11 h-11 flex items-center justify-center shrink-0 h-full aspect-square">
             <Briefcase size={24} strokeWidth={3} />
