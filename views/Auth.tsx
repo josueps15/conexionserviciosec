@@ -112,10 +112,6 @@ const Auth: React.FC<Props> = ({ direction = 'forward', mode, onAuthSuccess, onS
         user = userCred.user;
       } else if (providerType === 'google') {
         if (Capacitor.isNativePlatform()) {
-          // --- FORZAR SELECCIÓN DE CUENTA ---
-          // Primero cerramos la sesión del plugin para que no reuse la cuenta anterior
-          await FirebaseAuthentication.signOut();
-
           // --- NATIVE GOOGLE SIGN-IN (PLUGIN) ---
           const result = await FirebaseAuthentication.signInWithGoogle();
           const credential = GoogleAuthProvider.credential(result.credential?.idToken);
